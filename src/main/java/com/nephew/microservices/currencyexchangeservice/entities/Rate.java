@@ -1,15 +1,24 @@
-package com.nephew.microservices.currencyexchangeservice.beans;
+package com.nephew.microservices.currencyexchangeservice.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Rate {
 
+	@Id
 	private Long id;
+	@Column(name = "currency_from")
 	private String from;
+	@Column(name = "currency_to")
 	private String to;
 	private BigDecimal conversionMultiple;
 	private String environment;
+	@Column(name = "currency_date")
 	private LocalDate date;
 
 	public Rate(Long id, String from, String to, BigDecimal conversionMultiple, String environment, LocalDate date) {
@@ -25,7 +34,7 @@ public class Rate {
 	public Rate() {
 		super();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -50,11 +59,11 @@ public class Rate {
 		this.to = to;
 	}
 
-	public BigDecimal getConvertToMultiple() {
+	public BigDecimal getConversionMultiple() {
 		return conversionMultiple;
 	}
 
-	public void setConvertToMultiple(BigDecimal conversionMultiple) {
+	public void setConversionMultiple(BigDecimal conversionMultiple) {
 		this.conversionMultiple = conversionMultiple;
 	}
 
@@ -76,7 +85,7 @@ public class Rate {
 
 	@Override
 	public String toString() {
-		return "Rate [id=" + id + ", from=" + from + ", to=" + to + ", convertToMultiple=" + conversionMultiple
+		return "Rate [id=" + id + ", from=" + from + ", to=" + to + ", conversionMultiple=" + conversionMultiple
 				+ ", environment=" + environment + ", date=" + date + "]";
 	}
 

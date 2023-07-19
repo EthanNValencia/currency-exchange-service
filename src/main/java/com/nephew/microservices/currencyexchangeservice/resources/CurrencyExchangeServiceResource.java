@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nephew.microservices.currencyexchangeservice.entities.Rate;
 import com.nephew.microservices.currencyexchangeservice.repository.RateRepository;
 
+import io.github.resilience4j.retry.annotation.Retry;
+
 @RestController
 public class CurrencyExchangeServiceResource {
 
@@ -27,6 +29,7 @@ public class CurrencyExchangeServiceResource {
 	 *         conversion.
 	 */
 	@GetMapping(path = "currency-exchange/from/{from}/to/{to}")
+	@Retry(name="currency-exchange-api") // check app.props
 	public Rate retrieveCurrentExchangeRate(@PathVariable String from, @PathVariable String to) {
 		// TODO: implement logic to retrieve currency rates
 		Rate rate = rateRepository.findByFromAndTo(from, to);

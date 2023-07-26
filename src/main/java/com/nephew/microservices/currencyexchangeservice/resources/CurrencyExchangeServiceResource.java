@@ -29,8 +29,7 @@ public class CurrencyExchangeServiceResource {
 	 * Example URL: http://localhost:8000/currency-exchange/from/USD/to/INR
 	 * @param from Specifies the base currency type.
 	 * @param to   Specifies what the solution currency type will be.
-	 * @return The object that contains all the necessary data for the currency
-	 *         conversion.
+	 * @return The object that contains all the necessary data for the currency conversion.
 	 */
 	@GetMapping(path = "currency-exchange/from/{from}/to/{to}")
 	@Retry(name="currency-exchange-api") // check app.props
